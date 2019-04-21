@@ -25,12 +25,17 @@ SECRET_KEY = '_5cm(=1ezx3!yj9-v$=5wohcip*#=1%0d6apu9l2geg#wc^(_g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'mysite.com',
+    'localhost',
+    '127.0.0.1',
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'sslserver',
     'account.apps.AccountConfig',
     'django.contrib.auth',
     'django.contrib.admin',
@@ -38,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +144,29 @@ EMAIL_USE_SSL = False
 #Media Files or uploaded files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+
+#Authentication backend
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2',
+]
+
+
+# Social media settings
+#facebook
+
+SOCIAL_AUTH_FACEBOOK_KEY = '585641638612607' # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '6a79dc83af33566e02461f9653fdb637'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+#Twitter
+SOCIAL_AUTH_TWITTER_KEY = 'BnwwEysLGuXTUWL0rhM9UClsH' # Twitter Consumer Key
+SOCIAL_AUTH_TWITTER_SECRET = 'aWmlhxn9ddkO3gN5MJGZfDX9V7YXnvPD2nkFvDfWiYnAoiN7U0' # Twitter Consumer Secret
+
+#Google
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1006741881438-rkv9lh3it3eo1vr4imfrlhlb1ica0ept.apps.googleusercontent.com' # Google Consumer Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'bzygfIksqIrxTRAJsZvsVt58' # Google Consumer Secret
