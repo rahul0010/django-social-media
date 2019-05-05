@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'social_django',
     'images.apps.ImagesConfig',
     'sorl.thumbnail',
+    'actions.apps.ActionsConfig',
 ]
 
 MIDDLEWARE = [
@@ -179,3 +180,9 @@ SOCIAL_AUTH_TWITTER_SECRET = 'aWmlhxn9ddkO3gN5MJGZfDX9V7YXnvPD2nkFvDfWiYnAoiN7U0
 #Google
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1006741881438-rkv9lh3it3eo1vr4imfrlhlb1ica0ept.apps.googleusercontent.com' # Google Consumer Key
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'bzygfIksqIrxTRAJsZvsVt58' # Google Consumer Secret
+
+
+#Redis settings
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 0
